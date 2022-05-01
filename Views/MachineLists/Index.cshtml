@@ -1,0 +1,149 @@
+﻿@model IEnumerable<CCSystem_New.Models.MachineList>
+
+@{
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<br />
+<br />
+<br />
+<h5><p style="color:Highlight">รายการเครื่องจักร >> <b>หน้าหลัก</b></p></h5>
+<br />
+@using (Html.BeginForm("Index", "MachineLists", FormMethod.Get))
+{
+    <div>
+        @if (Session["FullName"] != null)
+        {
+            <button class="btn btn-info">
+                ชื่อ : @Session["FullName"].ToString() | อีเมล์ : @Session["Email"].ToString()
+            </button>
+
+        }
+    </div>
+}
+<br />
+<p>
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "MachineLists")'">
+        สร้าง
+    </button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            ชื่อโครงการ
+        </th>
+        <th>
+            รถปูยาง
+        </th>
+        <th>
+            จำนวน
+        </th>
+        <th>
+            รถดัน
+        </th>
+        <th>
+            จำนวน
+        </th>
+        <th>
+            รถเครน
+        </th>
+        <th>
+            จำนวน
+        </th>
+        <th>
+            รถแบคโฮ
+        </th>
+        <th>
+            จำนวน
+        </th>
+        <th>
+            รถโฟล์คลิฟท์
+        </th>
+        <th>
+            จำนวน
+        </th>
+        <th>
+            รถบด
+        </th>
+        <th>
+            จำนวน
+        </th>
+        <th>
+            รถตัก
+        </th>
+        <th>
+            จำนวน
+        </th>
+        <th>
+            รวมค่าเช่าเครื่องจักร
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Machine_Asphalt.MachineName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Machine_01_Unit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Machine_Bulldozer.MachineName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Machine_02_Unit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Machine_Crane.MachineName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Machine_03_Unit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Machine_Excavator.MachineName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Machine_04_Unit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Machine_Folklift.MachineName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Machine_05_Unit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Machine_Roller.MachineName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Machine_06_Unit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Machine_WheelLoader.MachineName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Machine_07_Unit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MachineRental)
+            </td>
+            <td>
+                <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("Edit", "MachineLists", new { id = item.ID })'">
+                    แก้ไข
+                </button>
+                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Details", "MachineLists", new { id = item.ID })'">
+                    รายละเอียด
+                </button>
+                <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "MachineLists", new { id = item.ID })'">
+                    ลบข้อมูล
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>

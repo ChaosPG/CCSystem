@@ -1,0 +1,67 @@
+﻿@model CCSystem_New.Models.Employee
+
+@{
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<br />
+<br />
+<br />
+<h3>ต้องการลบข้อมูลนี้หรือ?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.ProjectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.ProjectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpPosition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpPosition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpDepartment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpDepartment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpSalary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpSalary)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <Input type="submit" value="ลบข้อมูล" class="btn btn-danger" />
+            <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Index", "Employees")'">
+                กลับสู่หน้าหลัก
+            </button>
+        </div>
+    }
+
+</div>

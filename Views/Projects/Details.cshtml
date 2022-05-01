@@ -1,0 +1,85 @@
+﻿@model CCSystem_New.Models.Project
+
+@{
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<br />
+<br />
+<br />
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectLoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectLoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectOwner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectOwner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectBudget)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectBudget)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectSupervisor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectSupervisor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Progress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Progress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectEnd)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <Input type="submit" value="แก้ไข" class="btn btn-info" />
+    <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Index", "Projects")'">
+        กลับสู่หน้าหลัก
+    </button>
+</p>

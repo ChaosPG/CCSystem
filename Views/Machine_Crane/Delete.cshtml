@@ -1,0 +1,43 @@
+﻿@model CCSystem_New.Models.Machine_Crane
+
+@{
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<br />
+<br />
+<br />
+<h3>ต้องการลบข้อมูลนี้จริงหรือ?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MachineName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineRentalPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MachineRentalPrice)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <Input type="submit" value="ลบข้อมูล" class="btn btn-danger" />
+            <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Index", "Machine_Crane")'">
+                กลับสู่หน้าหลัก
+            </button>
+        </div>
+    }
+
+</div>

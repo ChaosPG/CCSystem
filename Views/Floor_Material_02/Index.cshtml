@@ -1,0 +1,73 @@
+﻿
+@model PagedList.IPagedList<CCSystem_New.Models.Floor_Material_02>
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<br />
+<br />
+<br />
+<h5><p style="color:Highlight">วัสดุปูพื้น 2 >> <b>หน้าหลัก</b></p></h5>
+<br />
+@using (Html.BeginForm("Index", "Floor_Material_02", FormMethod.Get))
+{
+    <div>
+        @if (Session["FullName"] != null)
+        {
+            <button class="btn btn-info">
+                ชื่อ : @Session["FullName"].ToString() | อีเมล์ : @Session["Email"].ToString()
+            </button>
+
+        }
+    </div>
+
+    <p class="navbar-right">
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+<br />
+<p>
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Floor_Material_02")'">
+        สร้าง
+    </button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("ชื่อวัสดุ", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            ราคาวัสดุ
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaterialName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaterialPrice)
+            </td>
+            <td>
+                <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("Edit", "Floor_Material_02", new { id = item.ID })'">
+                    แก้ไข
+                </button>
+                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Details", "Floor_Material_02", new { id = item.ID })'">
+                    รายละเอียด
+                </button>
+                <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "Floor_Material_02", new { id = item.ID })'">
+                    ลบข้อมูล
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

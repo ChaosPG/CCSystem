@@ -1,0 +1,157 @@
+﻿@model CCSystem_New.Models.MachineList
+
+@{
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<br />
+<br />
+<br />
+
+<h3>ต้องการลบข้อมูลนี้จริงหรือ?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine_Asphalt.MachineName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Machine_Asphalt.MachineName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine_Bulldozer.MachineName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Machine_Bulldozer.MachineName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine_Crane.MachineName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Machine_Crane.MachineName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine_Excavator.MachineName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Machine_Excavator.MachineName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine_Folklift.MachineName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Machine_Folklift.MachineName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine_Roller.MachineName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Machine_Roller.MachineName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine_WheelLoader.MachineName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Machine_WheelLoader.MachineName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.ProjectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.ProjectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine_01_Unit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Machine_01_Unit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine_02_Unit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Machine_02_Unit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine_03_Unit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Machine_03_Unit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine_04_Unit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Machine_04_Unit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine_05_Unit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Machine_05_Unit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine_06_Unit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Machine_06_Unit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine_07_Unit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Machine_07_Unit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineRental)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MachineRental)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <Input type="submit" value="ลบข้อมูล" class="btn btn-danger" />
+            <button type="button" class="btn btn-default" onclick="location.href='@Url.Action("Index", "MachineLists")'">
+                กลับสู่หน้าหลัก
+            </button>
+        </div>
+    }
+
+</div>

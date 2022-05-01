@@ -1,0 +1,138 @@
+﻿@model IEnumerable<CCSystem_New.Models.MaterialList>
+
+@{
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<br />
+<br />
+<br />
+<h5><p style="color:Highlight">รายการวัสดุ >> <b>หน้าหลัก</b></p></h5>
+<br />
+@using (Html.BeginForm("Index", "MaterialLists", FormMethod.Get))
+{
+    <div>
+        @if (Session["FullName"] != null)
+        {
+            <button class="btn btn-info">
+                ชื่อ : @Session["FullName"].ToString() | อีเมล์ : @Session["Email"].ToString()
+            </button>
+
+        }
+    </div>
+}
+<br />
+
+<p>
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "MaterialLists")'">
+        สร้าง
+    </button>
+</p>
+<table class="table container-fluid">
+    <tr>
+        <th>
+            ชื่อโครงการ
+        </th>
+        <th>
+            วัสดุปูพื้น 1
+        </th>
+        <th>
+            จำนวน
+        </th>
+        <th>
+            วัสดุปูพื้น 2
+        </th>
+        <th>
+            จำนวน
+        </th>
+        <th>
+            วัสดุทั่วไป 1
+        </th>
+        <th>
+            จำนวน
+        </th>
+        <th>
+            วัสดุทั่วไป 2
+        </th>
+        <th>
+            จำนวน
+        </th>
+        <th>
+            วัสดุมุงหลังคา 1
+        </th>
+        <th>
+            จำนวน
+        </th>
+        <th>
+            วัสดุมุงหลังคา 2
+        </th>
+        <th>
+            จำนวน
+        </th>
+        <th>
+            ราคาวัสดุ
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Floor_Material_01.MaterialName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Material_01_quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Floor_Material_02.MaterialName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Material_02_quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.General_Material_01.MaterialName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Material_03_quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.General_Material_02.MaterialName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Material_04_quantity)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Roof_Material_01.MaterialName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Material_05_quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Roof_Material_02.MaterialName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Material_06_quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaterialCost)
+            </td>
+            <td>
+                <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("Edit", "MaterialLists", new { id = item.ID })'">
+                    แก้ไข
+                </button>
+                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Details", "MaterialLists", new { id = item.ID })'">
+                    รายละเอียด
+                </button>
+                <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "MaterialLists", new { id = item.ID })'">
+                    ลบข้อมูล
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>

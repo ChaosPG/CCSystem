@@ -1,0 +1,73 @@
+﻿
+@model PagedList.IPagedList<CCSystem_New.Models.Machine_Excavator>
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<br />
+<br />
+<br />
+<h5><p style="color:Highlight">รายการรถแบคโฮ >> <b>หน้าหลัก</b></p></h5>
+<br />
+@using (Html.BeginForm("Index", "Machine_Excavator", FormMethod.Get))
+{
+    <div>
+        @if (Session["FullName"] != null)
+        {
+            <button class="btn btn-info">
+                ชื่อ : @Session["FullName"].ToString() | อีเมล์ : @Session["Email"].ToString()
+            </button>
+
+        }
+    </div>
+
+    <p class="navbar-right">
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+<br />
+<p>
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Machine_Excavator")'">
+        สร้าง
+    </button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("ชื่อเครื่องจักร", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            ค่าเช่าเครื่องจักร
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MachineName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MachineRentalPrice)
+            </td>
+            <td>
+                <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("Edit", "Machine_Excavator", new { id = item.ID })'">
+                    แก้ไข
+                </button>
+                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Details", "Machine_Excavator", new { id = item.ID })'">
+                    รายละเอียด
+                </button>
+                <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "Machine_Excavator", new { id = item.ID })'">
+                    ลบข้อมูล
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
